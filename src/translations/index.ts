@@ -1,158 +1,52 @@
-export const translations = {
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+
+const resources = {
   en: {
-    nav: {
-      home: 'Home',
-      branches: 'Branches',
-      learning: 'Learning',
-      leaderboard: 'Leaderboard',
-      achievements: 'Achievements',
-      news: 'News',
-      forum: 'Forum',
-      login: 'Login',
-      signup: 'Sign Up',
-      language: 'Language',
-    },
-    home: {
-      title: 'Welcome to CyberLearn',
-      subtitle: 'Master Cybersecurity Through Interactive Learning',
-      features: {
-        title: 'Why Choose CyberLearn?',
-        interactive: 'Interactive Learning',
-        gamified: 'Gamified Experience',
-        community: 'Community Support',
-        practical: 'Practical Skills',
+    translation: {
+      home: {
+        title: 'Welcome to Dheera',
+        subtitle: 'Your Gateway to Cybersecurity Learning'
       },
-      cta: {
-        start: 'Start Learning',
-        explore: 'Explore Branches',
-      },
-    },
-    branches: {
-      title: 'Cybersecurity Branches',
-      subtitle: 'Explore different areas of cybersecurity',
-      tools: 'Tools',
-      features: 'Features',
-      benefits: 'Benefits',
-      network: {
-        title: 'Network Security',
-        description: 'Network security focuses on protecting computer networks and their infrastructure.',
-      },
-      ethical: {
-        title: 'Ethical Hacking',
-        description: 'Ethical hacking and penetration testing for security assessment.',
-      },
-      cloud: {
-        title: 'Cloud Security',
-        description: 'Cloud security for protecting cloud-based infrastructure and services.',
-      },
-      crypto: {
-        title: 'Cryptography',
-        description: 'Cryptography and encryption for secure data transmission.',
-      },
-    },
-    auth: {
-      login: {
-        title: 'Welcome Back',
-        email: 'Email',
-        password: 'Password',
-        submit: 'Login',
-        noAccount: "Don't have an account?",
-        signup: 'Sign Up',
-      },
-      signup: {
-        title: 'Create Account',
-        name: 'Name',
-        email: 'Email',
-        password: 'Password',
-        confirmPassword: 'Confirm Password',
-        submit: 'Sign Up',
-        haveAccount: 'Already have an account?',
-        login: 'Login',
-      },
-      cancel: 'Cancel',
-      errors: {
-        required: 'Please fill in all fields',
-        passwordMatch: 'Passwords do not match',
-        invalidEmail: 'Please enter a valid email address',
-      },
-    },
+      nav: {
+        home: 'Home',
+        branches: 'Branches',
+        learning: 'Learning',
+        leaderboard: 'Leaderboard',
+        achievements: 'Achievements',
+        news: 'News',
+        forum: 'Forum'
+      }
+    }
   },
   hi: {
-    nav: {
-      home: 'होम',
-      branches: 'शाखाएं',
-      learning: 'लर्निंग',
-      leaderboard: 'लीडरबोर्ड',
-      achievements: 'उपलब्धियां',
-      news: 'समाचार',
-      forum: 'फोरम',
-      login: 'लॉगिन',
-      signup: 'साइन अप',
-      language: 'भाषा',
-    },
-    home: {
-      title: 'साइबरलर्न में आपका स्वागत है',
-      subtitle: 'इंटरैक्टिव लर्निंग के माध्यम से साइबर सुरक्षा सीखें',
-      features: {
-        title: 'साइबरलर्न क्यों चुनें?',
-        interactive: 'इंटरैक्टिव लर्निंग',
-        gamified: 'गेमिफाइड अनुभव',
-        community: 'समुदाय सहायता',
-        practical: 'व्यावहारिक कौशल',
+    translation: {
+      home: {
+        title: 'धीरा में आपका स्वागत है',
+        subtitle: 'साइबर सुरक्षा सीखने का आपका द्वार'
       },
-      cta: {
-        start: 'लर्निंग शुरू करें',
-        explore: 'शाखाएं एक्सप्लोर करें',
-      },
-    },
-    branches: {
-      title: 'साइबर सुरक्षा शाखाएं',
-      subtitle: 'साइबर सुरक्षा के विभिन्न क्षेत्रों का अन्वेषण करें',
-      tools: 'टूल्स',
-      features: 'विशेषताएं',
-      benefits: 'लाभ',
-      network: {
-        title: 'नेटवर्क सुरक्षा',
-        description: 'नेटवर्क सुरक्षा कंप्यूटर नेटवर्क और उनके बुनियादी ढांचे की सुरक्षा पर ध्यान केंद्रित करती है।',
-      },
-      ethical: {
-        title: 'नैतिक हैकिंग',
-        description: 'सुरक्षा मूल्यांकन के लिए नैतिक हैकिंग और पैठ परीक्षण।',
-      },
-      cloud: {
-        title: 'क्लाउड सुरक्षा',
-        description: 'क्लाउड-आधारित बुनियादी ढांचे और सेवाओं की सुरक्षा के लिए क्लाउड सुरक्षा।',
-      },
-      crypto: {
-        title: 'क्रिप्टोग्राफी',
-        description: 'सुरक्षित डेटा संचरण के लिए क्रिप्टोग्राफी और एन्क्रिप्शन।',
-      },
-    },
-    auth: {
-      login: {
-        title: 'वापस आने पर स्वागत है',
-        email: 'ईमेल',
-        password: 'पासवर्ड',
-        submit: 'लॉगिन',
-        noAccount: 'खाता नहीं है?',
-        signup: 'साइन अप',
-      },
-      signup: {
-        title: 'खाता बनाएं',
-        name: 'नाम',
-        email: 'ईमेल',
-        password: 'पासवर्ड',
-        confirmPassword: 'पासवर्ड की पुष्टि करें',
-        submit: 'साइन अप',
-        haveAccount: 'पहले से खाता है?',
-        login: 'लॉगिन',
-      },
-      cancel: 'रद्द करें',
-      errors: {
-        required: 'कृपया सभी फ़ील्ड भरें',
-        passwordMatch: 'पासवर्ड मेल नहीं खाते',
-        invalidEmail: 'कृपया एक मान्य ईमेल पता दर्ज करें',
-      },
-    },
-  },
-}; 
+      nav: {
+        home: 'होम',
+        branches: 'शाखाएं',
+        learning: 'सीखना',
+        leaderboard: 'लीडरबोर्ड',
+        achievements: 'उपलब्धियां',
+        news: 'समाचार',
+        forum: 'फोरम'
+      }
+    }
+  }
+};
+
+i18n
+  .use(initReactI18next)
+  .init({
+    resources,
+    lng: 'en',
+    fallbackLng: 'en',
+    interpolation: {
+      escapeValue: false
+    }
+  });
+
+export default i18n; 

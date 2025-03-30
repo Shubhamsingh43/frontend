@@ -6,18 +6,16 @@ const theme = createTheme({
     primary: {
       main: '#00ff9f',
       light: '#6effd1',
-      dark: '#00cb6f',
-      contrastText: '#000000',
+      dark: '#00cb70',
     },
     secondary: {
-      main: '#ff3d71',
-      light: '#ff7ea3',
-      dark: '#c60042',
-      contrastText: '#ffffff',
+      main: '#2196f3',
+      light: '#6ec6ff',
+      dark: '#0069c0',
     },
     background: {
       default: '#0a1929',
-      paper: 'rgba(255, 255, 255, 0.05)',
+      paper: '#001e3c',
     },
     text: {
       primary: '#ffffff',
@@ -32,7 +30,7 @@ const theme = createTheme({
     },
     h2: {
       fontSize: '2rem',
-      fontWeight: 600,
+      fontWeight: 700,
     },
     h3: {
       fontSize: '1.75rem',
@@ -40,7 +38,7 @@ const theme = createTheme({
     },
     h4: {
       fontSize: '1.5rem',
-      fontWeight: 500,
+      fontWeight: 600,
     },
     h5: {
       fontSize: '1.25rem',
@@ -63,19 +61,9 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          textTransform: 'none',
           borderRadius: 8,
-          padding: '8px 16px',
-          fontWeight: 500,
-          '&:hover': {
-            boxShadow: '0 4px 12px rgba(0, 255, 159, 0.2)',
-          },
-        },
-        contained: {
-          boxShadow: 'none',
-          '&:hover': {
-            boxShadow: '0 4px 12px rgba(0, 255, 159, 0.2)',
-          },
+          textTransform: 'none',
+          fontWeight: 600,
         },
       },
     },
