@@ -1,39 +1,41 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-const resources = {
+export const translations = {
   en: {
-    translation: {
-      home: {
-        title: 'Welcome to Dheera',
-        subtitle: 'Your Gateway to Cybersecurity Learning'
-      },
-      nav: {
-        home: 'Home',
-        branches: 'Branches',
-        learning: 'Learning',
-        leaderboard: 'Leaderboard',
-        achievements: 'Achievements',
-        news: 'News',
-        forum: 'Forum'
-      }
+    nav: {
+      home: 'Home',
+      branches: 'Branches',
+      learning: 'Learning',
+      leaderboard: 'Leaderboard',
+      achievements: 'Achievements',
+      news: 'News',
+      forum: 'Forum',
+      login: 'Login',
+      signup: 'Sign Up',
+      language: 'Language',
+    },
+    home: {
+      title: 'Welcome to Dheera',
+      subtitle: 'Your Gateway to Cybersecurity Learning'
     }
   },
   hi: {
-    translation: {
-      home: {
-        title: 'धीरा में आपका स्वागत है',
-        subtitle: 'साइबर सुरक्षा सीखने का आपका द्वार'
-      },
-      nav: {
-        home: 'होम',
-        branches: 'शाखाएं',
-        learning: 'सीखना',
-        leaderboard: 'लीडरबोर्ड',
-        achievements: 'उपलब्धियां',
-        news: 'समाचार',
-        forum: 'फोरम'
-      }
+    nav: {
+      home: 'होम',
+      branches: 'शाखाएं',
+      learning: 'सीखना',
+      leaderboard: 'लीडरबोर्ड',
+      achievements: 'उपलब्धियां',
+      news: 'समाचार',
+      forum: 'फोरम',
+      login: 'लॉगिन',
+      signup: 'साइन अप',
+      language: 'भाषा',
+    },
+    home: {
+      title: 'धीरा में आपका स्वागत है',
+      subtitle: 'साइबर सुरक्षा सीखने का आपका द्वार'
     }
   }
 };
@@ -41,7 +43,7 @@ const resources = {
 i18n
   .use(initReactI18next)
   .init({
-    resources,
+    resources: translations,
     lng: 'en',
     fallbackLng: 'en',
     interpolation: {

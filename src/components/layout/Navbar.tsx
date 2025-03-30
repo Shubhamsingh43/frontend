@@ -3,7 +3,7 @@ import { useNavigate, Link as RouterLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
 import { setLanguage } from '../../store/slices/languageSlice';
-import { translations } from '../../translations';
+import { toggleTheme } from '../../store/slices/themeSlice';
 import {
   AppBar,
   Box,
@@ -12,13 +12,11 @@ import {
   Typography,
   Menu,
   Container,
-  Avatar,
   Button,
   Tooltip,
   MenuItem,
   Select,
   FormControl,
-  InputLabel,
   Drawer,
   List,
   ListItem,
@@ -32,7 +30,6 @@ import {
   Security as SecurityIcon,
   DarkMode as DarkModeIcon,
   LightMode as LightModeIcon,
-  Language as LanguageIcon,
   School as SchoolIcon,
   EmojiEvents as EmojiEventsIcon,
   Star as StarIcon,
@@ -41,11 +38,13 @@ import {
 } from '@mui/icons-material';
 import AuthModal from '../auth/AuthModal';
 import { useTranslation } from 'react-i18next';
-import LanguageSwitcher from '../language/LanguageSwitcher';
 
-type PageTitle = keyof typeof translations.en.nav;
+interface Page {
+  title: string;
+  path: string;
+}
 
-const pages: { title: PageTitle; path: string }[] = [
+const pages: Page[] = [
   { title: 'home', path: '/' },
   { title: 'branches', path: '/branches' },
   { title: 'learning', path: '/learning' },
@@ -65,28 +64,29 @@ const Navbar: React.FC = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [anchorElLang, setAnchorElLang] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
-  };
-
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+  const handleOpenLangMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElLang(event.currentTarget);
   };
 
-  const handleLanguageChange = (event: any) => {
-    dispatch(setLanguage(event.target.value));
+  const handleCloseLangMenu = () => {
+    setAnchorElLang(null);
+  };
+
+  const handleLanguageChange = (lang: string) => {
+    dispatch(setLanguage(lang));
+    handleCloseLangMenu();
   };
 
   const handleAuthModalOpen = () => {
@@ -168,7 +168,7 @@ const Navbar: React.FC = () => {
               textDecoration: 'none',
             }}
           >
-            CYBERLEARN
+            DHEERA
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -192,7 +192,7 @@ const Navbar: React.FC = () => {
             >
               {pages.map((page) => (
                 <MenuItem
-                  key={page.title}
+                  key={page.path}
                   onClick={() => {
                     handleCloseNavMenu();
                     navigate(page.path);
@@ -221,13 +221,13 @@ const Navbar: React.FC = () => {
               textDecoration: 'none',
             }}
           >
-            CYBERLEARN
+            DHEERA
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                key={page.title}
+                key={page.path}
                 onClick={() => {
                   handleCloseNavMenu();
                   navigate(page.path);
@@ -240,10 +240,14 @@ const Navbar: React.FC = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center', gap: 2 }}>
+            <IconButton onClick={() => dispatch(toggleTheme())} color="inherit">
+              {isDarkMode ? <LightModeIcon /> : <DarkModeIcon />}
+            </IconButton>
+
             <FormControl size="small">
               <Select
                 value={currentLanguage}
-                onChange={handleLanguageChange}
+                onChange={(event) => handleLanguageChange(event.target.value)}
                 sx={{ color: 'white', '.MuiOutlinedInput-notchedOutline': { borderColor: 'white' } }}
               >
                 <MenuItem value="en">English</MenuItem>
@@ -266,8 +270,6 @@ const Navbar: React.FC = () => {
               {t('nav.signup')}
             </Button>
           </Box>
-
-          <LanguageSwitcher />
         </Toolbar>
       </Container>
 
